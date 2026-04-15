@@ -1,0 +1,13 @@
+{
+  "appId": "com.sentidos.mis5sentidos",
+  "appName": "Mis 5 Sentidos",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "buildOptions": {
+      "signingType": "apksigner"
+    }
+  }
+}
