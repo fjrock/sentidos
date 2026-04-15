@@ -124,6 +124,57 @@
   font-size: 28px;
 }
 
+/* Speaker buttons */
+.speaker-button {
+  border: 2px solid rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: transform 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.speaker-button:hover {
+  background: rgba(255,255,255,0.35);
+  transform: scale(1.05);
+}
+
+.speaker-button:active {
+  transform: scale(0.95);
+}
+
+.speaker-button-small {
+  border: none;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  cursor: pointer;
+  margin: 10px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.speaker-button-small:hover {
+  background: rgba(255,255,255,0.4);
+  transform: scale(1.1);
+}
+
+.speaker-button-small:active {
+  transform: scale(0.9);
+}
+
 /* ============ QUIZ PHASE ============ */
 .quiz-phase {
   max-width: 420px;

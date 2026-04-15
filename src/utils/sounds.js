@@ -9,6 +9,46 @@ function getContext() {
   return audioCtx
 }
 
+// Text-to-Speech in Spanish
+let spanishVoice = null
+
+function findSpanishVoice() {
+  const voices = window.speechSynthesis.getVoices()
+  spanishVoice = voices.find(v => v.lang.startsWith('es') && v.name.toLowerCase().includes('female'))
+    || voices.find(v => v.lang.startsWith('es'))
+    || null
+  return spanishVoice
+}
+
+// Load voices (they load async in some browsers)
+if (window.speechSynthesis) {
+  findSpanishVoice()
+  window.speechSynthesis.onvoiceschanged = findSpanishVoice
+}
+
+export function speak(text, rate = 0.85) {
+  try {
+    if (!window.speechSynthesis) return
+    window.speechSynthesis.cancel()
+    const utterance = new SpeechSynthesisUtterance(text)
+    utterance.lang = 'es-ES'
+    utterance.rate = rate
+    utterance.pitch = 1.1
+    utterance.volume = 1
+    if (!spanishVoice) findSpanishVoice()
+    if (spanishVoice) utterance.voice = spanishVoice
+    window.speechSynthesis.speak(utterance)
+  } catch {}
+}
+
+export function stopSpeaking() {
+  try {
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel()
+    }
+  } catch {}
+}
+
 export function playCorrect() {
   try {
     const ctx = getContext()

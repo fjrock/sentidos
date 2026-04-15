@@ -1,12 +1,21 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { senses } from '../data/senses'
-import { playClick } from '../utils/sounds'
+import { playClick, speak, stopSpeaking } from '../utils/sounds'
 import './Home.css'
 
 function Home() {
   const navigate = useNavigate()
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      speak('Bienvenido a Mis 5 Sentidos! Toca un sentido para aprender y jugar. Los sentidos son: La Vista, El Oído, El Olfato, El Gusto y El Tacto.')
+    }, 600)
+    return () => { clearTimeout(timer); stopSpeaking() }
+  }, [])
+
   const handleSenseClick = (senseId) => {
+    stopSpeaking()
     playClick()
     navigate(`/sentido/${senseId}`)
   }

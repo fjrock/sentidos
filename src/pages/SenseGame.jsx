@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import confetti from 'canvas-confetti'
 import { senses } from '../data/senses'
-import { playCorrect, playWrong, playCelebration, playClick } from '../utils/sounds'
+import { playCorrect, playWrong, playCelebration, playClick, speak, stopSpeaking } from '../utils/sounds'
 import './SenseGame.css'
 
 const PHASES = {
@@ -28,6 +28,51 @@ function SenseGame() {
     window.scrollTo(0, 0)
   }, [phase, currentQ])
 
+  // Speak intro when entering intro phase
+  useEffect(() => {
+    if (phase === PHASES.INTRO && sense) {
+      const timer = setTimeout(() => {
+        speak(`${sense.name}. ${sense.organ}. ${sense.description} ${sense.funFact}`)
+      }, 500)
+      return () => { clearTimeout(timer); stopSpeaking() }
+    }
+  }, [phase, sense])
+
+  // Speak question when entering quiz phase or changing question
+  useEffect(() => {
+    if (phase === PHASES.QUIZ && sense) {
+      const q = sense.questions[currentQ]
+      const timer = setTimeout(() => {
+        const optionsText = q.options.map((o, i) => `${i + 1}, ${o.text}`).join('. ')
+        speak(`${q.question} Las opciones son: ${optionsText}`)
+      }, 400)
+      return () => { clearTimeout(timer); stopSpeaking() }
+    }
+  }, [phase, currentQ, sense])
+
+  // Speak completion results
+  useEffect(() => {
+    if (phase === PHASES.COMPLETE && sense) {
+      const finalS = score
+      const total = sense.questions.length
+      const timer = setTimeout(() => {
+        if (finalS >= 4) {
+          speak(`Excelente! Sacaste ${finalS} de ${total} correctas. Eres un experto en ${sense.name}!`)
+        } else if (finalS >= 3) {
+          speak(`Muy bien! Sacaste ${finalS} de ${total} correctas. Aprendiste mucho sobre ${sense.name}!`)
+        } else {
+          speak(`Buen intento! Sacaste ${finalS} de ${total} correctas. Sigue practicando sobre ${sense.name}!`)
+        }
+      }, 500)
+      return () => { clearTimeout(timer); stopSpeaking() }
+    }
+  }, [phase, sense, score])
+
+  // Cleanup speech on unmount
+  useEffect(() => {
+    return () => stopSpeaking()
+  }, [])
+
   if (!sense) {
     navigate('/')
     return null
@@ -36,13 +81,25 @@ function SenseGame() {
   const question = sense.questions[currentQ]
 
   const handleStartQuiz = () => {
+    stopSpeaking()
     playClick()
     setPhase(PHASES.QUIZ)
+  }
+
+  const replayIntroAudio = () => {
+    speak(`${sense.name}. ${sense.organ}. ${sense.description} ${sense.funFact}`)
+  }
+
+  const replayQuestionAudio = () => {
+    const q = sense.questions[currentQ]
+    const optionsText = q.options.map((o, i) => `${i + 1}, ${o.text}`).join('. ')
+    speak(`${q.question} Las opciones son: ${optionsText}`)
   }
 
   const handleAnswer = (option, index) => {
     if (selected !== null) return
 
+    stopSpeaking()
     setSelected(index)
     setIsCorrect(option.correct)
 
@@ -56,8 +113,11 @@ function SenseGame() {
         origin: { y: 0.7 },
         colors: [sense.color, '#ffd700', '#ff6b6b', '#48dbfb'],
       })
+      setTimeout(() => speak('Muy bien! Correcto!'), 300)
     } else {
       playWrong()
+      const correctAnswer = option.correct ? option.text : question.options.find(o => o.correct)?.text
+      setTimeout(() => speak(`Casi! La respuesta correcta es: ${correctAnswer}`), 300)
     }
 
     setTimeout(() => {
@@ -79,15 +139,17 @@ function SenseGame() {
           }, 300)
         }
       }
-    }, 1500)
+    }, 2500)
   }
 
   const handleGoHome = () => {
+    stopSpeaking()
     playClick()
     navigate('/')
   }
 
   const handlePlayAgain = () => {
+    stopSpeaking()
     playClick()
     setPhase(PHASES.INTRO)
     setCurrentQ(0)
@@ -136,6 +198,10 @@ function SenseGame() {
             <p>{sense.funFact}</p>
           </div>
 
+          <button className="speaker-button" onClick={replayIntroAudio} title="Escuchar de nuevo">
+            🔊 Escuchar
+          </button>
+
           <button
             className="play-button pulse"
             onClick={handleStartQuiz}
@@ -170,6 +236,9 @@ function SenseGame() {
           <div className="question-container">
             <div className="question-icon">{sense.icon}</div>
             <h2 className="question-text">{question.question}</h2>
+            <button className="speaker-button-small" onClick={replayQuestionAudio} title="Escuchar pregunta">
+              🔊
+            </button>
           </div>
 
           {/* Options */}
