@@ -9,7 +9,7 @@ function Home() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      speak('Bienvenido a Mis 5 Sentidos! Toca un sentido para aprender y jugar. Los sentidos son: La Vision, La Audicion, El Olfato, El Gusto y El Tacto.')
+      speak('Bienvenido a Mis 5 Sentidos! Toca un sentido para aprender y jugar. Los sentidos son: La Visión, La Audición, El Olfato, El Gusto y El Tacto.')
     }, 600)
     return () => { clearTimeout(timer); stopSpeaking() }
   }, [])

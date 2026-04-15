@@ -1,7 +1,7 @@
 export const senses = [
   {
     id: 'vista',
-    name: 'La Vision',
+    name: 'La Visión',
     organ: 'Los Ojos',
     icon: '👁️',
     organIcon: '👀',
@@ -55,7 +55,7 @@ export const senses = [
   },
   {
     id: 'oido',
-    name: 'La Audicion',
+    name: 'La Audición',
     organ: 'Los Oidos',
     icon: '👂',
     organIcon: '👂',
