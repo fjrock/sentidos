@@ -12,9 +12,12 @@ const lessons = [
     icon: '👁️',
     organIcon: '👀',
     color: '#3b82f6',
+    verb: 'VER',
+    verbPhrase: 'Visión viene de VER',
+    verbTip: 'Visión suena como VER. Yo VEO con mis ojos. Entonces el sentido de VER se llama... La Visión!',
     action: 'Tócate los ojos con cuidado!',
-    rhyme: 'Con mis ojitos puedo ver, los colores puedo aprender. La visión me ayuda a mirar, todo lo que quiero observar!',
-    example: 'Mira a tu alrededor. Todo lo que ves es gracias a la visión!',
+    rhyme: 'VER, VER, VER con la Visión! Mis ojitos ven con emoción. Si quiero VER uso los ojos, y el sentido es la Vi-sión!',
+    example: 'Mira a tu alrededor. Todo lo que VES es gracias a la Visión!',
     bodyPart: 'ojos',
   },
   {
@@ -23,9 +26,12 @@ const lessons = [
     icon: '👂',
     organIcon: '👂',
     color: '#10b981',
+    verb: 'OÍR',
+    verbPhrase: 'Audición viene de OÍR',
+    verbTip: 'Audición suena como AUDIO, y audio es lo que se OYE. Yo OIGO con mis oídos. Entonces el sentido de OÍR se llama... La Audición!',
     action: 'Tócate las orejas!',
-    rhyme: 'Con mis oídos puedo oír, la música y el reír. La audición me deja escuchar, los sonidos de este lugar!',
-    example: 'Cierra los ojos y escucha. Todo lo que oyes es gracias a la audición!',
+    rhyme: 'OÍR, OÍR, OÍR con la Audición! Mis oídos oyen cada canción. Si quiero OÍR uso las orejas, y el sentido es la Audi-ción!',
+    example: 'Cierra los ojos y escucha. Todo lo que OYES es gracias a la Audición!',
     bodyPart: 'oídos',
   },
   {
@@ -34,9 +40,12 @@ const lessons = [
     icon: '👃',
     organIcon: '👃',
     color: '#f97316',
+    verb: 'OLER',
+    verbPhrase: 'Olfato viene de OLER',
+    verbTip: 'Olfato suena como OLER. Yo HUELO con mi nariz. Entonces el sentido de OLER se llama... El Olfato!',
     action: 'Tócate la nariz!',
-    rhyme: 'Con mi nariz puedo oler, las flores y el pastel. El olfato es genial, huelo rico y huelo mal!',
-    example: 'Respira profundo por la nariz. Todo lo que hueles es gracias al olfato!',
+    rhyme: 'OLER, OLER, OLER con el Olfato! Mi nariz huele el rico pastel y el zapato. Si quiero OLER uso la nariz, y el sentido es el Ol-fa-to!',
+    example: 'Respira profundo por la nariz. Todo lo que HUELES es gracias al Olfato!',
     bodyPart: 'nariz',
   },
   {
@@ -45,9 +54,12 @@ const lessons = [
     icon: '👅',
     organIcon: '👅',
     color: '#ef4444',
+    verb: 'GUSTAR',
+    verbPhrase: 'Gusto viene de GUSTAR',
+    verbTip: 'Gusto suena como GUSTAR. Cuando algo te GUSTA es por el sabor. Yo PRUEBO con mi lengua. Entonces el sentido de saborear se llama... El Gusto!',
     action: 'Saca la lengua!',
-    rhyme: 'Con mi lengua puedo probar, lo dulce y lo salado al gustar. El gusto me dice el sabor, si es amargo o es mejor!',
-    example: 'Piensa en tu comida favorita. Ese rico sabor es gracias al gusto y tu lengua!',
+    rhyme: 'GUSTAR, GUSTAR, GUSTAR con el Gusto! Mi lengua prueba lo rico, qué susto! Si quiero probar uso la lengua, y el sentido es el Gus-to!',
+    example: 'Piensa en tu comida favorita. Ese rico sabor es gracias al Gusto y tu lengua!',
     bodyPart: 'lengua',
   },
   {
@@ -56,9 +68,12 @@ const lessons = [
     icon: '🖐️',
     organIcon: '✋',
     color: '#8b5cf6',
+    verb: 'TOCAR',
+    verbPhrase: 'Tacto viene de TOCAR',
+    verbTip: 'Tacto suena como TOCAR. Yo TOCO con mis manos y mi piel. Entonces el sentido de TOCAR se llama... El Tacto!',
     action: 'Tócate las manos, los brazos, la cara!',
-    rhyme: 'Con mis manos puedo sentir, si es suave o me hace reír. El tacto me dice al tocar, si es frío o me va a quemar!',
-    example: 'Toca la mesa, tu ropa, tu cara. Todo lo que sientes es gracias al tacto!',
+    rhyme: 'TOCAR, TOCAR, TOCAR con el Tacto! Mis manos tocan suave, es un gran acto. Si quiero TOCAR uso las manos, y el sentido es el Tac-to!',
+    example: 'Toca la mesa, tu ropa, tu cara. Todo lo que sientes al TOCAR es gracias al Tacto!',
     bodyPart: 'manos y piel',
   },
 ]
@@ -66,6 +81,7 @@ const lessons = [
 const STEPS = {
   INTRO: 'intro',
   TEACH: 'teach',
+  ASSOCIATE: 'associate',
   RHYME: 'rhyme',
   MINI_TEST: 'mini_test',
   MATCH: 'match',
@@ -107,7 +123,16 @@ function LearnMode() {
   useEffect(() => {
     if (step === STEPS.TEACH) {
       const timer = setTimeout(() => {
-        speak(`${playerName}, este es el sentido de ${lesson.sense}. Usamos ${lesson.organ} para ${lesson.sense.toLowerCase().replace('la ', '').replace('el ', '')}. ${lesson.action} ${lesson.example}`)
+        speak(`${playerName}, este es el sentido de ${lesson.sense}. Usamos ${lesson.organ}. ${lesson.action} ${lesson.example}`)
+      }, 400)
+      return () => { clearTimeout(timer); stopSpeaking() }
+    }
+  }, [step, currentLesson])
+
+  useEffect(() => {
+    if (step === STEPS.ASSOCIATE) {
+      const timer = setTimeout(() => {
+        speak(`${playerName}, escucha bien! ${lesson.verbTip}. Repite conmigo: ${lesson.verb}... ${lesson.sense}! ${lesson.verb}... ${lesson.sense}!`, 0.8)
       }, 400)
       return () => { clearTimeout(timer); stopSpeaking() }
     }
@@ -156,7 +181,7 @@ function LearnMode() {
         confetti({ particleCount: 200, spread: 180, origin: { y: 0.5 } })
       }, 300)
       const timer = setTimeout(() => {
-        speak(`Felicidades ${playerName}! Aprendiste los 5 sentidos! Recuerda: Visión con los ojos, Audición con los oídos, Olfato con la nariz, Gusto con la lengua, y Tacto con las manos y la piel!`)
+        speak(`Felicidades ${playerName}! Aprendiste los 5 sentidos! Recuerda los trucos: VER es la Visión, OÍR es la Audición, OLER es el Olfato, GUSTAR es el Gusto, y TOCAR es el Tacto!`)
       }, 500)
       return () => { clearTimeout(timer); stopSpeaking() }
     }
@@ -172,6 +197,12 @@ function LearnMode() {
     stopSpeaking()
     playClick()
     setStep(STEPS.TEACH)
+  }
+
+  const handleNextToAssociate = () => {
+    stopSpeaking()
+    playClick()
+    setStep(STEPS.ASSOCIATE)
   }
 
   const handleNextToRhyme = () => {
@@ -329,14 +360,59 @@ function LearnMode() {
           </div>
 
           <div className="learn-association">
-            <span className="learn-assoc-item">{lesson.organIcon}</span>
+            <span className="learn-assoc-text" style={{ fontSize: '22px' }}>{lesson.verb}</span>
             <span className="learn-assoc-arrow">→</span>
-            <span className="learn-assoc-item">{lesson.icon}</span>
+            <span className="learn-assoc-item">{lesson.organIcon}</span>
             <span className="learn-assoc-arrow">→</span>
             <span className="learn-assoc-text">{lesson.sense}</span>
           </div>
 
           <button className="speaker-button" onClick={() => speak(`${lesson.sense}. ${lesson.organ}. ${lesson.action} ${lesson.example}`)}>🔊 Escuchar de nuevo</button>
+
+          <button className="play-button" onClick={handleNextToAssociate} style={{ background: lesson.color }}>
+            <span>Siguiente: El Truco! 🔑</span>
+          </button>
+        </div>
+      )}
+
+      {/* ASSOCIATE - Word bridge */}
+      {step === STEPS.ASSOCIATE && (
+        <div className="intro-phase slide-up" key={`assoc-${currentLesson}`}>
+          <div className="learn-progress-dots">
+            {lessons.map((l, i) => (
+              <span key={i} className={`learn-dot ${i === currentLesson ? 'active' : i < currentLesson ? 'done' : ''}`}>
+                {i < currentLesson ? '✅' : l.icon}
+              </span>
+            ))}
+          </div>
+
+          <h1 className="intro-title">El Truco para Recordar</h1>
+          <p className="intro-organ" style={{ fontSize: '18px' }}>{lesson.verbPhrase}</p>
+
+          <div className="word-bridge">
+            <div className="bridge-step bridge-verb pop-in">
+              <div className="bridge-label">Tú ya sabes</div>
+              <div className="bridge-word">{lesson.verb}</div>
+            </div>
+            <div className="bridge-arrow pop-in" style={{ animationDelay: '0.3s' }}>↓</div>
+            <div className="bridge-step bridge-sense pop-in" style={{ animationDelay: '0.6s', borderColor: lesson.color }}>
+              <div className="bridge-label">El sentido se llama</div>
+              <div className="bridge-word">{lesson.icon} {lesson.sense}</div>
+            </div>
+            <div className="bridge-arrow pop-in" style={{ animationDelay: '0.9s' }}>↓</div>
+            <div className="bridge-step bridge-organ pop-in" style={{ animationDelay: '1.2s' }}>
+              <div className="bridge-label">Y usamos</div>
+              <div className="bridge-word">{lesson.organIcon} {lesson.organ}</div>
+            </div>
+          </div>
+
+          <div className="bridge-summary pop-in" style={{ animationDelay: '1.5s', background: `${lesson.color}33`, borderColor: lesson.color }}>
+            <p className="bridge-summary-text">
+              {lesson.verb} → {lesson.sense} → {lesson.organ}
+            </p>
+          </div>
+
+          <button className="speaker-button" onClick={() => speak(`${lesson.verbTip}. Repite: ${lesson.verb}... ${lesson.sense}!`, 0.8)}>🔊 Escuchar de nuevo</button>
 
           <button className="play-button" onClick={handleNextToRhyme} style={{ background: lesson.color }}>
             <span>Siguiente: La Rima! 🎵</span>
@@ -451,10 +527,12 @@ function LearnMode() {
           <h1 className="complete-title">Felicidades {playerName}!</h1>
 
           <div className="intro-card">
-            <p className="learn-summary-title">Los 5 Sentidos:</p>
+            <p className="learn-summary-title">Los Trucos para Recordar:</p>
             <div className="learn-summary">
               {lessons.map((l, i) => (
                 <div key={i} className="learn-summary-row">
+                  <span className="learn-summary-verb">{l.verb}</span>
+                  <span>→</span>
                   <span>{l.icon}</span>
                   <span className="learn-summary-sense">{l.sense}</span>
                   <span>→</span>
@@ -465,7 +543,7 @@ function LearnMode() {
             </div>
           </div>
 
-          <button className="speaker-button" onClick={() => speak(`Recuerda ${playerName}: Visión con los ojos, Audición con los oídos, Olfato con la nariz, Gusto con la lengua, y Tacto con las manos y la piel!`)}>🔊 Escuchar resumen</button>
+          <button className="speaker-button" onClick={() => speak(`Recuerda ${playerName}: VER es la Visión con los ojos. OÍR es la Audición con los oídos. OLER es el Olfato con la nariz. GUSTAR es el Gusto con la lengua. TOCAR es el Tacto con las manos!`)}>🔊 Escuchar resumen</button>
 
           <div className="complete-buttons">
             <button className="play-again-button" onClick={() => { stopSpeaking(); setCurrentLesson(0); setStep(STEPS.INTRO) }} style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}>🔄 Repasar de nuevo</button>

@@ -79,6 +79,86 @@
   color: white;
 }
 
+/* Word Bridge Association */
+.word-bridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0;
+  width: 100%;
+}
+
+.bridge-step {
+  background: rgba(255,255,255,0.95);
+  border-radius: 18px;
+  padding: 16px 24px;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  border: 3px solid transparent;
+}
+
+.bridge-verb {
+  border-color: #fbbf24;
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+}
+
+.bridge-sense {
+  border-color: #3b82f6;
+}
+
+.bridge-organ {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+}
+
+.bridge-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.bridge-word {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1f2937;
+}
+
+.bridge-arrow {
+  font-size: 28px;
+  color: white;
+  font-weight: 900;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.bridge-summary {
+  border: 3px solid;
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.bridge-summary-text {
+  font-size: 22px;
+  font-weight: 900;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.learn-summary-verb {
+  font-weight: 900;
+  color: #d97706;
+  font-size: 15px;
+  min-width: 55px;
+  text-align: right;
+}
+
 /* Rhyme card */
 .rhyme-card {
   background: rgba(255,255,255,0.95);

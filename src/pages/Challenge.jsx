@@ -6,66 +6,68 @@ import { playCorrect, playWrong, playClick, playCelebration, speak, stopSpeaking
 import './SenseGame.css'
 
 const allSenses = [
-  { sense: 'La Visión', organ: 'Los Ojos', icon: '👁️', organIcon: '👀', bodyPart: 'ojos', color: '#3b82f6' },
-  { sense: 'La Audición', organ: 'Los Oídos', icon: '👂', organIcon: '👂', bodyPart: 'oídos', color: '#10b981' },
-  { sense: 'El Olfato', organ: 'La Nariz', icon: '👃', organIcon: '👃', bodyPart: 'nariz', color: '#f97316' },
-  { sense: 'El Gusto', organ: 'La Lengua', icon: '👅', organIcon: '👅', bodyPart: 'lengua', color: '#ef4444' },
-  { sense: 'El Tacto', organ: 'La Piel y las Manos', icon: '🖐️', organIcon: '✋', bodyPart: 'manos y piel', color: '#8b5cf6' },
+  { sense: 'La Visión', organ: 'Los Ojos', icon: '👁️', organIcon: '👀', bodyPart: 'ojos', color: '#3b82f6', verb: 'VER' },
+  { sense: 'La Audición', organ: 'Los Oídos', icon: '👂', organIcon: '👂', bodyPart: 'oídos', color: '#10b981', verb: 'OÍR' },
+  { sense: 'El Olfato', organ: 'La Nariz', icon: '👃', organIcon: '👃', bodyPart: 'nariz', color: '#f97316', verb: 'OLER' },
+  { sense: 'El Gusto', organ: 'La Lengua', icon: '👅', organIcon: '👅', bodyPart: 'lengua', color: '#ef4444', verb: 'GUSTAR' },
+  { sense: 'El Tacto', organ: 'La Piel y las Manos', icon: '🖐️', organIcon: '✋', bodyPart: 'manos y piel', color: '#8b5cf6', verb: 'TOCAR' },
 ]
 
-// Level 1: Show organ icon, pick sense name (text only, no sense icons)
-// Level 2: Only audio question, no organ icon shown, pick sense name (text only)
-// Level 3: Only audio, pick the organ that matches the sense (reversed)
+// Level 1: Show the VERB as hint → pick sense name
+// Level 2: Show the verb → pick organ (no sense name shown)
+// Level 3: Only audio, no hints at all → pick sense name
 
 function generateQuestions(level) {
   const questions = []
 
   if (level === 1) {
-    // Show organ icon → pick sense name (text only)
+    // Show VERB → pick sense name (verb is the bridge hint)
     const shuffled = [...allSenses].sort(() => Math.random() - 0.5)
     shuffled.forEach(s => {
       const others = allSenses.filter(x => x.sense !== s.sense).sort(() => Math.random() - 0.5).slice(0, 2)
       const options = [s, ...others].sort(() => Math.random() - 0.5)
       questions.push({
-        type: 'organ_to_sense',
-        prompt: `Ves estos: ${s.organIcon}  ${s.organ}`,
-        audioPrompt: `Mira bien. ${s.organ}. Cómo se llama el sentido que usa ${s.bodyPart}?`,
-        showIcon: s.organIcon,
-        showText: s.organ,
+        type: 'verb_to_sense',
+        prompt: `${s.verb}... Cómo se llama ese sentido?`,
+        audioPrompt: `Si la acción es ${s.verb}... Cómo se llama el sentido de ${s.verb}? Recuerda el truco!`,
+        showIcon: '🔑',
+        showText: s.verb,
         answer: s.sense,
+        verbHint: s.verb,
         options: options.map(o => ({ text: o.sense, correct: o.sense === s.sense })),
       })
     })
   } else if (level === 2) {
-    // Only audio, no visual hints, pick sense name
+    // Show verb → pick the organ
     const shuffled = [...allSenses].sort(() => Math.random() - 0.5)
     shuffled.forEach(s => {
       const others = allSenses.filter(x => x.sense !== s.sense).sort(() => Math.random() - 0.5).slice(0, 2)
       const options = [s, ...others].sort(() => Math.random() - 0.5)
       questions.push({
-        type: 'audio_only_sense',
-        prompt: `Con qué sentido usamos los ${s.bodyPart}?`,
-        audioPrompt: `Piensa bien. Con qué sentido usamos los ${s.bodyPart}? No hay pistas! Tú lo sabes!`,
-        showIcon: '❓',
-        showText: '',
-        answer: s.sense,
-        options: options.map(o => ({ text: o.sense, correct: o.sense === s.sense })),
+        type: 'verb_to_organ',
+        prompt: `${s.verb}... Qué parte del cuerpo usamos?`,
+        audioPrompt: `Si la acción es ${s.verb}... Con qué parte del cuerpo lo hacemos? Piensa bien!`,
+        showIcon: '🔑',
+        showText: s.verb,
+        answer: s.organ,
+        verbHint: s.verb,
+        options: options.map(o => ({ text: o.organ, correct: o.organ === s.organ })),
       })
     })
   } else if (level === 3) {
-    // Mixed: sense name given → pick the organ (reversed) + pure recall
+    // No hints at all - pure recall, mixed questions
     const shuffled = [...allSenses].sort(() => Math.random() - 0.5)
     shuffled.forEach(s => {
       const others = allSenses.filter(x => x.sense !== s.sense).sort(() => Math.random() - 0.5).slice(0, 2)
       const options = [s, ...others].sort(() => Math.random() - 0.5)
       questions.push({
-        type: 'sense_to_organ',
-        prompt: `${s.sense}: Qué parte del cuerpo usamos?`,
-        audioPrompt: `Si el sentido es ${s.sense}, qué parte del cuerpo usamos? Recuerda sin pistas!`,
+        type: 'pure_recall',
+        prompt: `Con los ${s.bodyPart}... Cuál es el sentido?`,
+        audioPrompt: `Usando los ${s.bodyPart}, cuál es el sentido? Sin pistas! Tú lo sabes!`,
         showIcon: '🧠',
-        showText: s.sense,
-        answer: s.organ,
-        options: options.map(o => ({ text: o.organ, correct: o.organ === s.organ })),
+        showText: '',
+        answer: s.sense,
+        options: options.map(o => ({ text: o.sense, correct: o.sense === s.sense })),
       })
     })
   }
@@ -97,7 +99,7 @@ function Challenge() {
   useEffect(() => {
     if (phase === 'select') {
       const timer = setTimeout(() => {
-        speak(`${playerName}, este es el desafío de memoria! Aquí no hay pistas. Tienes que recordar los sentidos tú solito. Elige un nivel de dificultad!`)
+        speak(`${playerName}, este es el desafío! Recuerda los trucos: VER es la Visión, OÍR es la Audición, OLER es el Olfato, GUSTAR es el Gusto, y TOCAR es el Tacto! Elige un nivel!`)
       }, 500)
       return () => { clearTimeout(timer); stopSpeaking() }
     }
@@ -151,11 +153,21 @@ function Challenge() {
       playCorrect()
       setScore(s => s + 1)
       confetti({ particleCount: 40, spread: 50, origin: { y: 0.7 } })
-      speak(`Correcto ${playerName}! Lo recordaste!`)
+      const q = questions[currentQ]
+      if (q.verbHint) {
+        speak(`Correcto ${playerName}! ${q.verbHint} es ${q.answer}! Lo recordaste!`)
+      } else {
+        speak(`Correcto ${playerName}! Lo recordaste!`)
+      }
     } else {
       playWrong()
       const q = questions[currentQ]
-      speak(`No ${playerName}, la respuesta es ${q.answer}. Recuérdalo: ${q.answer}!`)
+      const senseData = allSenses.find(s => s.sense === q.answer || s.organ === q.answer)
+      if (senseData) {
+        speak(`No ${playerName}. Recuerda: ${senseData.verb} es ${senseData.sense} y usa ${senseData.organ}. ${senseData.verb}... ${senseData.sense}!`)
+      } else {
+        speak(`No ${playerName}, la respuesta es ${q.answer}. Recuérdalo!`)
+      }
     }
 
     setTimeout(() => {
@@ -196,10 +208,10 @@ function Challenge() {
             <div className="intro-icon float">🧠</div>
           </div>
           <h1 className="intro-title">Desafío</h1>
-          <p className="intro-organ">Sin pistas! Solo tu memoria</p>
+          <p className="intro-organ">Usa los trucos para recordar!</p>
 
           <div className="intro-card">
-            <p className="intro-description">{playerName}, aquí tienes que recordar los sentidos sin ver las respuestas con iconos. Solo texto!</p>
+            <p className="intro-description">{playerName}, recuerda: cada sentido viene de un verbo que ya conoces. VER, OÍR, OLER, GUSTAR, TOCAR!</p>
           </div>
 
           <div className="challenge-levels">
@@ -207,7 +219,7 @@ function Challenge() {
               <span className="challenge-level-icon">⭐</span>
               <div>
                 <div className="challenge-level-name">Fácil</div>
-                <div className="challenge-level-desc">Ves el órgano, dices el sentido</div>
+                <div className="challenge-level-desc">Te digo el verbo, dices el sentido</div>
               </div>
             </button>
 
@@ -215,7 +227,7 @@ function Challenge() {
               <span className="challenge-level-icon">⭐⭐</span>
               <div>
                 <div className="challenge-level-name">Difícil</div>
-                <div className="challenge-level-desc">Sin pistas! Solo audio</div>
+                <div className="challenge-level-desc">Te digo el verbo, dices el órgano</div>
               </div>
             </button>
 
@@ -223,7 +235,7 @@ function Challenge() {
               <span className="challenge-level-icon">⭐⭐⭐</span>
               <div>
                 <div className="challenge-level-name">Experto</div>
-                <div className="challenge-level-desc">Dices el órgano del sentido</div>
+                <div className="challenge-level-desc">Sin pistas! Solo tu memoria</div>
               </div>
             </button>
           </div>
@@ -243,17 +255,16 @@ function Challenge() {
           </div>
 
           <div className="question-container">
-            <div className="question-icon" style={{ fontSize: level === 2 ? '80px' : '60px' }}>
-              {question.showIcon}
-            </div>
-            {level === 2 ? (
-              <h2 className="question-text">{question.prompt}</h2>
+            {question.verbHint ? (
+              <>
+                <div className="question-icon" style={{ fontSize: '50px' }}>🔑</div>
+                <div className="challenge-verb-hint">{question.verbHint}</div>
+                <h2 className="question-text">{question.prompt}</h2>
+              </>
             ) : (
               <>
-                {question.showText && <p className="challenge-show-text">{question.showText}</p>}
-                <h2 className="question-text">
-                  {level === 1 ? 'Cómo se llama este sentido?' : 'Qué parte del cuerpo usamos?'}
-                </h2>
+                <div className="question-icon" style={{ fontSize: '80px' }}>{question.showIcon}</div>
+                <h2 className="question-text">{question.prompt}</h2>
               </>
             )}
             <button className="speaker-button-small" onClick={() => speak(question.audioPrompt)}>🔊</button>
