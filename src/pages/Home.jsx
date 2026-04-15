@@ -1,15 +1,21 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { senses } from '../data/senses'
+import { usePlayer } from '../context/PlayerContext'
 import { playClick, speak, stopSpeaking } from '../utils/sounds'
 import './Home.css'
 
 function Home() {
   const navigate = useNavigate()
+  const { playerName } = usePlayer()
 
   useEffect(() => {
+    if (!playerName) {
+      navigate('/')
+      return
+    }
     const timer = setTimeout(() => {
-      speak('Bienvenido a Mis 5 Sentidos! Toca un sentido para aprender y jugar. Los sentidos son: La Visión, La Audición, El Olfato, El Gusto y El Tacto.')
+      speak(`Hola ${playerName}! Elige un sentido para aprender y jugar. Los sentidos son: La Visión, La Audición, El Olfato, El Gusto y El Tacto.`)
     }, 600)
     return () => { clearTimeout(timer); stopSpeaking() }
   }, [])
@@ -30,7 +36,7 @@ function Home() {
 
       <header className="home-header slide-up">
         <div className="home-title-icon">🧒</div>
-        <h1 className="home-title">Mis 5 Sentidos</h1>
+        <h1 className="home-title">Hola {playerName}!</h1>
         <p className="home-subtitle">Toca un sentido para aprender y jugar</p>
       </header>
 

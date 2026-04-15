@@ -11,100 +11,60 @@ export const senses = [
     description: 'Con los ojos podemos ver los colores, las formas y todo lo que nos rodea.',
     funFact: 'Tus ojos pueden ver millones de colores diferentes!',
     questions: [
-      {
-        question: 'Que usamos para ver?',
-        options: [
-          { text: 'Los ojos', icon: '👀', correct: true },
-          { text: 'Las manos', icon: '✋', correct: false },
-          { text: 'La nariz', icon: '👃', correct: false },
-        ]
-      },
-      {
-        question: 'De que color es el sol?',
-        options: [
-          { text: 'Azul', icon: '🔵', correct: false },
-          { text: 'Amarillo', icon: '🟡', correct: true },
-          { text: 'Verde', icon: '🟢', correct: false },
-        ]
-      },
-      {
-        question: 'Cual de estos es redondo?',
-        options: [
-          { text: 'Una pelota', icon: '⚽', correct: true },
-          { text: 'Un libro', icon: '📖', correct: false },
-          { text: 'Una regla', icon: '📏', correct: false },
-        ]
-      },
-      {
-        question: 'Que podemos ver en el cielo de noche?',
-        options: [
-          { text: 'Estrellas', icon: '⭐', correct: true },
-          { text: 'Flores', icon: '🌸', correct: false },
-          { text: 'Peces', icon: '🐟', correct: false },
-        ]
-      },
-      {
-        question: 'De que color es el pasto?',
-        options: [
-          { text: 'Rojo', icon: '🔴', correct: false },
-          { text: 'Verde', icon: '🟢', correct: true },
-          { text: 'Morado', icon: '🟣', correct: false },
-        ]
-      },
+      { question: 'Que usamos para ver?', options: [{ text: 'Los ojos', icon: '👀', correct: true }, { text: 'Las manos', icon: '✋', correct: false }, { text: 'La nariz', icon: '👃', correct: false }] },
+      { question: 'De que color es el sol?', options: [{ text: 'Azul', icon: '🔵', correct: false }, { text: 'Amarillo', icon: '🟡', correct: true }, { text: 'Verde', icon: '🟢', correct: false }] },
+      { question: 'Cual de estos es redondo?', options: [{ text: 'Una pelota', icon: '⚽', correct: true }, { text: 'Un libro', icon: '📖', correct: false }, { text: 'Una regla', icon: '📏', correct: false }] },
+      { question: 'Que podemos ver en el cielo de noche?', options: [{ text: 'Estrellas', icon: '⭐', correct: true }, { text: 'Flores', icon: '🌸', correct: false }, { text: 'Peces', icon: '🐟', correct: false }] },
+      { question: 'De que color es el pasto?', options: [{ text: 'Rojo', icon: '🔴', correct: false }, { text: 'Verde', icon: '🟢', correct: true }, { text: 'Morado', icon: '🟣', correct: false }] },
+      { question: 'Que animal tiene rayas blancas y negras?', options: [{ text: 'La cebra', icon: '🦓', correct: true }, { text: 'El leon', icon: '🦁', correct: false }, { text: 'El oso', icon: '🐻', correct: false }] },
+      { question: 'De que color es el cielo en un dia soleado?', options: [{ text: 'Rojo', icon: '🔴', correct: false }, { text: 'Azul', icon: '🔵', correct: true }, { text: 'Negro', icon: '⚫', correct: false }] },
+      { question: 'Cual de estos brilla en la noche?', options: [{ text: 'Una piedra', icon: '🪨', correct: false }, { text: 'La luna', icon: '🌙', correct: true }, { text: 'Un arbol', icon: '🌳', correct: false }] },
+      { question: 'Que forma tiene una caja?', options: [{ text: 'Redonda', icon: '⭕', correct: false }, { text: 'Cuadrada', icon: '⬜', correct: true }, { text: 'Triangular', icon: '🔺', correct: false }] },
+      { question: 'De que color es una fresa?', options: [{ text: 'Azul', icon: '🔵', correct: false }, { text: 'Amarillo', icon: '🟡', correct: false }, { text: 'Rojo', icon: '🔴', correct: true }] },
+      { question: 'Que es mas grande?', options: [{ text: 'Un elefante', icon: '🐘', correct: true }, { text: 'Un raton', icon: '🐭', correct: false }, { text: 'Una hormiga', icon: '🐜', correct: false }] },
+      { question: 'De que color es un platano?', options: [{ text: 'Amarillo', icon: '🟡', correct: true }, { text: 'Morado', icon: '🟣', correct: false }, { text: 'Azul', icon: '🔵', correct: false }] },
+      { question: 'Que vemos cuando llueve en el cielo?', options: [{ text: 'Estrellas', icon: '⭐', correct: false }, { text: 'Nubes grises', icon: '🌧️', correct: true }, { text: 'Mariposas', icon: '🦋', correct: false }] },
+      { question: 'Cual tiene muchos colores?', options: [{ text: 'El arcoiris', icon: '🌈', correct: true }, { text: 'La nieve', icon: '❄️', correct: false }, { text: 'Una nube', icon: '☁️', correct: false }] },
+      { question: 'Que forma tiene una rueda?', options: [{ text: 'Cuadrada', icon: '⬜', correct: false }, { text: 'Redonda', icon: '⭕', correct: true }, { text: 'Triangular', icon: '🔺', correct: false }] },
+      { question: 'De que color es la nieve?', options: [{ text: 'Negra', icon: '⚫', correct: false }, { text: 'Verde', icon: '🟢', correct: false }, { text: 'Blanca', icon: '⚪', correct: true }] },
+      { question: 'Que animal es naranja con rayas negras?', options: [{ text: 'El tigre', icon: '🐯', correct: true }, { text: 'La vaca', icon: '🐮', correct: false }, { text: 'El conejo', icon: '🐰', correct: false }] },
+      { question: 'Que vemos de noche en el cielo que es redonda?', options: [{ text: 'El sol', icon: '☀️', correct: false }, { text: 'La luna', icon: '🌕', correct: true }, { text: 'Una nube', icon: '☁️', correct: false }] },
+      { question: 'Que insecto tiene alas de colores?', options: [{ text: 'La hormiga', icon: '🐜', correct: false }, { text: 'La mariposa', icon: '🦋', correct: true }, { text: 'La arana', icon: '🕷️', correct: false }] },
+      { question: 'De que color es el chocolate?', options: [{ text: 'Blanco', icon: '⚪', correct: false }, { text: 'Cafe', icon: '🟤', correct: true }, { text: 'Azul', icon: '🔵', correct: false }] },
     ]
   },
   {
     id: 'oido',
     name: 'La Audición',
-    organ: 'Los Oidos',
+    organ: 'Los Oídos',
     icon: '👂',
     organIcon: '👂',
     color: '#10b981',
     gradient: 'linear-gradient(135deg, #10b981, #059669)',
     bgColor: '#d1fae5',
-    description: 'Con los oidos podemos escuchar los sonidos, la musica y las voces.',
-    funFact: 'Tus oidos nunca dejan de escuchar, ni cuando duermes!',
+    description: 'Con los oídos podemos escuchar los sonidos, la música y las voces.',
+    funFact: 'Tus oídos nunca dejan de escuchar, ni cuando duermes!',
     questions: [
-      {
-        question: 'Que usamos para escuchar?',
-        options: [
-          { text: 'La boca', icon: '👄', correct: false },
-          { text: 'Los oidos', icon: '👂', correct: true },
-          { text: 'Los pies', icon: '🦶', correct: false },
-        ]
-      },
-      {
-        question: 'Que animal hace "muu"?',
-        options: [
-          { text: 'El gato', icon: '🐱', correct: false },
-          { text: 'La vaca', icon: '🐮', correct: true },
-          { text: 'El perro', icon: '🐕', correct: false },
-        ]
-      },
-      {
-        question: 'Que instrumento tiene teclas blancas y negras?',
-        options: [
-          { text: 'La guitarra', icon: '🎸', correct: false },
-          { text: 'El tambor', icon: '🥁', correct: false },
-          { text: 'El piano', icon: '🎹', correct: true },
-        ]
-      },
-      {
-        question: 'Que sonido hace la lluvia?',
-        options: [
-          { text: 'Ring ring', icon: '🔔', correct: false },
-          { text: 'Plic plac', icon: '🌧️', correct: true },
-          { text: 'Guau guau', icon: '🐕', correct: false },
-        ]
-      },
-      {
-        question: 'Que animal canta por las mananas?',
-        options: [
-          { text: 'El gallo', icon: '🐓', correct: true },
-          { text: 'El pez', icon: '🐟', correct: false },
-          { text: 'La tortuga', icon: '🐢', correct: false },
-        ]
-      },
+      { question: 'Que usamos para escuchar?', options: [{ text: 'La boca', icon: '👄', correct: false }, { text: 'Los oídos', icon: '👂', correct: true }, { text: 'Los pies', icon: '🦶', correct: false }] },
+      { question: 'Que animal hace "muu"?', options: [{ text: 'El gato', icon: '🐱', correct: false }, { text: 'La vaca', icon: '🐮', correct: true }, { text: 'El perro', icon: '🐕', correct: false }] },
+      { question: 'Que instrumento tiene teclas blancas y negras?', options: [{ text: 'La guitarra', icon: '🎸', correct: false }, { text: 'El tambor', icon: '🥁', correct: false }, { text: 'El piano', icon: '🎹', correct: true }] },
+      { question: 'Que sonido hace la lluvia?', options: [{ text: 'Ring ring', icon: '🔔', correct: false }, { text: 'Plic plac', icon: '🌧️', correct: true }, { text: 'Guau guau', icon: '🐕', correct: false }] },
+      { question: 'Que animal canta por las mañanas?', options: [{ text: 'El gallo', icon: '🐓', correct: true }, { text: 'El pez', icon: '🐟', correct: false }, { text: 'La tortuga', icon: '🐢', correct: false }] },
+      { question: 'Que animal hace "miau"?', options: [{ text: 'El gato', icon: '🐱', correct: true }, { text: 'El caballo', icon: '🐴', correct: false }, { text: 'La oveja', icon: '🐑', correct: false }] },
+      { question: 'Que sonido hace una campana?', options: [{ text: 'Miau miau', icon: '🐱', correct: false }, { text: 'Din don', icon: '🔔', correct: true }, { text: 'Splash', icon: '💦', correct: false }] },
+      { question: 'Que hace mucho ruido en una tormenta?', options: [{ text: 'El trueno', icon: '⛈️', correct: true }, { text: 'La luna', icon: '🌙', correct: false }, { text: 'Las flores', icon: '🌸', correct: false }] },
+      { question: 'Que animal hace "guau guau"?', options: [{ text: 'La gallina', icon: '🐔', correct: false }, { text: 'El perro', icon: '🐕', correct: true }, { text: 'El pato', icon: '🦆', correct: false }] },
+      { question: 'Con que hacemos musica golpeando?', options: [{ text: 'El tambor', icon: '🥁', correct: true }, { text: 'El libro', icon: '📖', correct: false }, { text: 'El zapato', icon: '👟', correct: false }] },
+      { question: 'Que animal hace "cuac cuac"?', options: [{ text: 'El pato', icon: '🦆', correct: true }, { text: 'El leon', icon: '🦁', correct: false }, { text: 'La abeja', icon: '🐝', correct: false }] },
+      { question: 'Que suena cuando alguien toca la puerta?', options: [{ text: 'Toc toc', icon: '🚪', correct: true }, { text: 'Muu muu', icon: '🐮', correct: false }, { text: 'Pio pio', icon: '🐤', correct: false }] },
+      { question: 'Que animal hace "bee bee"?', options: [{ text: 'El gato', icon: '🐱', correct: false }, { text: 'La oveja', icon: '🐑', correct: true }, { text: 'El pez', icon: '🐟', correct: false }] },
+      { question: 'Que escuchamos cuando sopla mucho viento?', options: [{ text: 'Silencio', icon: '🤫', correct: false }, { text: 'Uuuuh del viento', icon: '💨', correct: true }, { text: 'Musica', icon: '🎵', correct: false }] },
+      { question: 'Que instrumento tiene cuerdas y se toca con los dedos?', options: [{ text: 'La guitarra', icon: '🎸', correct: true }, { text: 'La flauta', icon: '🎶', correct: false }, { text: 'El tambor', icon: '🥁', correct: false }] },
+      { question: 'Que sonido hace un pollito?', options: [{ text: 'Muuu', icon: '🐮', correct: false }, { text: 'Pio pio', icon: '🐤', correct: true }, { text: 'Croac', icon: '🐸', correct: false }] },
+      { question: 'Que animal hace "croac croac"?', options: [{ text: 'La rana', icon: '🐸', correct: true }, { text: 'El perro', icon: '🐕', correct: false }, { text: 'La vaca', icon: '🐮', correct: false }] },
+      { question: 'Que usamos para hablar por telefono?', options: [{ text: 'Los ojos', icon: '👀', correct: false }, { text: 'La voz y los oídos', icon: '📱', correct: true }, { text: 'Las manos solas', icon: '✋', correct: false }] },
+      { question: 'Que hace ruido cuando aplaudimos?', options: [{ text: 'Los pies', icon: '🦶', correct: false }, { text: 'Las manos', icon: '👏', correct: true }, { text: 'La nariz', icon: '👃', correct: false }] },
+      { question: 'Que animal zumba y hace "bzzz"?', options: [{ text: 'La abeja', icon: '🐝', correct: true }, { text: 'El conejo', icon: '🐰', correct: false }, { text: 'La tortuga', icon: '🐢', correct: false }] },
     ]
   },
   {
@@ -116,49 +76,29 @@ export const senses = [
     color: '#f97316',
     gradient: 'linear-gradient(135deg, #f97316, #ea580c)',
     bgColor: '#ffedd5',
-    description: 'Con la nariz podemos oler las flores, la comida y muchas cosas mas.',
-    funFact: 'Tu nariz puede reconocer mas de 10,000 olores diferentes!',
+    description: 'Con la nariz podemos oler las flores, la comida y muchas cosas más.',
+    funFact: 'Tu nariz puede reconocer más de 10,000 olores diferentes!',
     questions: [
-      {
-        question: 'Que usamos para oler?',
-        options: [
-          { text: 'Los ojos', icon: '👀', correct: false },
-          { text: 'La nariz', icon: '👃', correct: true },
-          { text: 'Las orejas', icon: '👂', correct: false },
-        ]
-      },
-      {
-        question: 'Que huele muy rico?',
-        options: [
-          { text: 'Una flor', icon: '🌹', correct: true },
-          { text: 'Una piedra', icon: '🪨', correct: false },
-          { text: 'Un zapato', icon: '👟', correct: false },
-        ]
-      },
-      {
-        question: 'Que huele rico en la cocina?',
-        options: [
-          { text: 'Galletas horneadas', icon: '🍪', correct: true },
-          { text: 'Un vaso vacio', icon: '🥛', correct: false },
-          { text: 'Un tenedor', icon: '🍴', correct: false },
-        ]
-      },
-      {
-        question: 'Que fruta tiene un olor muy fuerte?',
-        options: [
-          { text: 'La manzana', icon: '🍎', correct: false },
-          { text: 'La naranja', icon: '🍊', correct: true },
-          { text: 'La uva', icon: '🍇', correct: false },
-        ]
-      },
-      {
-        question: 'Que huele mal?',
-        options: [
-          { text: 'Un perfume', icon: '🧴', correct: false },
-          { text: 'Una rosa', icon: '🌹', correct: false },
-          { text: 'La basura', icon: '🗑️', correct: true },
-        ]
-      },
+      { question: 'Que usamos para oler?', options: [{ text: 'Los ojos', icon: '👀', correct: false }, { text: 'La nariz', icon: '👃', correct: true }, { text: 'Las orejas', icon: '👂', correct: false }] },
+      { question: 'Que huele muy rico?', options: [{ text: 'Una flor', icon: '🌹', correct: true }, { text: 'Una piedra', icon: '🪨', correct: false }, { text: 'Un zapato', icon: '👟', correct: false }] },
+      { question: 'Que huele rico en la cocina?', options: [{ text: 'Galletas horneadas', icon: '🍪', correct: true }, { text: 'Un vaso vacío', icon: '🥛', correct: false }, { text: 'Un tenedor', icon: '🍴', correct: false }] },
+      { question: 'Que fruta tiene un olor muy fuerte?', options: [{ text: 'La manzana', icon: '🍎', correct: false }, { text: 'La naranja', icon: '🍊', correct: true }, { text: 'La uva', icon: '🍇', correct: false }] },
+      { question: 'Que huele mal?', options: [{ text: 'Un perfume', icon: '🧴', correct: false }, { text: 'Una rosa', icon: '🌹', correct: false }, { text: 'La basura', icon: '🗑️', correct: true }] },
+      { question: 'Que huele rico cuando la mama cocina?', options: [{ text: 'La sopa', icon: '🍲', correct: true }, { text: 'El agua', icon: '💧', correct: false }, { text: 'El hielo', icon: '🧊', correct: false }] },
+      { question: 'Que flor huele muy bonito?', options: [{ text: 'La rosa', icon: '🌹', correct: true }, { text: 'El cactus', icon: '🌵', correct: false }, { text: 'Un hongo', icon: '🍄', correct: false }] },
+      { question: 'Que huele rico en la panadería?', options: [{ text: 'Los libros', icon: '📚', correct: false }, { text: 'El pan recien horneado', icon: '🍞', correct: true }, { text: 'Las sillas', icon: '🪑', correct: false }] },
+      { question: 'Que parte del cuerpo usamos para respirar y oler?', options: [{ text: 'La boca', icon: '👄', correct: false }, { text: 'La nariz', icon: '👃', correct: true }, { text: 'Los ojos', icon: '👀', correct: false }] },
+      { question: 'Que fruta huele dulce?', options: [{ text: 'La fresa', icon: '🍓', correct: true }, { text: 'El limón', icon: '🍋', correct: false }, { text: 'La cebolla', icon: '🧅', correct: false }] },
+      { question: 'Que huele fuerte y te hace llorar al cortarlo?', options: [{ text: 'El tomate', icon: '🍅', correct: false }, { text: 'La cebolla', icon: '🧅', correct: true }, { text: 'La lechuga', icon: '🥬', correct: false }] },
+      { question: 'Que huele bonito en el jardín?', options: [{ text: 'Las flores', icon: '🌺', correct: true }, { text: 'Las rocas', icon: '🪨', correct: false }, { text: 'La tierra seca', icon: '🏜️', correct: false }] },
+      { question: 'Que huele rico en navidad?', options: [{ text: 'Las medias', icon: '🧦', correct: false }, { text: 'Las galletas de jengibre', icon: '🍪', correct: true }, { text: 'Los regalos cerrados', icon: '🎁', correct: false }] },
+      { question: 'Que bebida caliente huele delicioso?', options: [{ text: 'El chocolate caliente', icon: '☕', correct: true }, { text: 'El agua fría', icon: '💧', correct: false }, { text: 'El hielo', icon: '🧊', correct: false }] },
+      { question: 'Que huele rico después de llover?', options: [{ text: 'La tierra mojada', icon: '🌧️', correct: true }, { text: 'El cemento', icon: '🧱', correct: false }, { text: 'El plástico', icon: '🔲', correct: false }] },
+      { question: 'Que huele mal en los zapatos viejos?', options: [{ text: 'Perfume', icon: '🧴', correct: false }, { text: 'Mal olor de sudor', icon: '👟', correct: true }, { text: 'Flores', icon: '🌸', correct: false }] },
+      { question: 'Que huele rico en el desayuno?', options: [{ text: 'Las tostadas', icon: '🍞', correct: true }, { text: 'El tenedor', icon: '🍴', correct: false }, { text: 'El mantel', icon: '🏳️', correct: false }] },
+      { question: 'Que especia huele muy fuerte?', options: [{ text: 'La canela', icon: '🫚', correct: true }, { text: 'El arroz', icon: '🍚', correct: false }, { text: 'El agua', icon: '💧', correct: false }] },
+      { question: 'Donde hay muchos olores ricos?', options: [{ text: 'En un estacionamiento', icon: '🅿️', correct: false }, { text: 'En una florería', icon: '💐', correct: true }, { text: 'En un baño sucio', icon: '🚽', correct: false }] },
+      { question: 'Que fruta huele mucho cuando la cortas?', options: [{ text: 'La sandía', icon: '🍉', correct: false }, { text: 'El limón', icon: '🍋', correct: true }, { text: 'La uva', icon: '🍇', correct: false }] },
     ]
   },
   {
@@ -170,49 +110,29 @@ export const senses = [
     color: '#ef4444',
     gradient: 'linear-gradient(135deg, #ef4444, #dc2626)',
     bgColor: '#fee2e2',
-    description: 'Con la lengua podemos saborear si algo es dulce, salado, acido o amargo.',
-    funFact: 'Tu lengua tiene mas de 10,000 papilas gustativas!',
+    description: 'Con la lengua podemos saborear si algo es dulce, salado, ácido o amargo.',
+    funFact: 'Tu lengua tiene más de 10,000 papilas gustativas!',
     questions: [
-      {
-        question: 'Que usamos para saborear?',
-        options: [
-          { text: 'La lengua', icon: '👅', correct: true },
-          { text: 'Los dedos', icon: '🖐️', correct: false },
-          { text: 'La nariz', icon: '👃', correct: false },
-        ]
-      },
-      {
-        question: 'Que sabor tiene un caramelo?',
-        options: [
-          { text: 'Salado', icon: '🧂', correct: false },
-          { text: 'Dulce', icon: '🍬', correct: true },
-          { text: 'Amargo', icon: '😖', correct: false },
-        ]
-      },
-      {
-        question: 'Que sabor tiene un limon?',
-        options: [
-          { text: 'Dulce', icon: '🍬', correct: false },
-          { text: 'Acido', icon: '🍋', correct: true },
-          { text: 'Salado', icon: '🧂', correct: false },
-        ]
-      },
-      {
-        question: 'Que comida es dulce?',
-        options: [
-          { text: 'Papas fritas', icon: '🍟', correct: false },
-          { text: 'Un pastel', icon: '🎂', correct: true },
-          { text: 'Una ensalada', icon: '🥗', correct: false },
-        ]
-      },
-      {
-        question: 'Que es salado?',
-        options: [
-          { text: 'Un helado', icon: '🍦', correct: false },
-          { text: 'Una manzana', icon: '🍎', correct: false },
-          { text: 'Las papas fritas', icon: '🍟', correct: true },
-        ]
-      },
+      { question: 'Que usamos para saborear?', options: [{ text: 'La lengua', icon: '👅', correct: true }, { text: 'Los dedos', icon: '🖐️', correct: false }, { text: 'La nariz', icon: '👃', correct: false }] },
+      { question: 'Que sabor tiene un caramelo?', options: [{ text: 'Salado', icon: '🧂', correct: false }, { text: 'Dulce', icon: '🍬', correct: true }, { text: 'Amargo', icon: '😖', correct: false }] },
+      { question: 'Que sabor tiene un limón?', options: [{ text: 'Dulce', icon: '🍬', correct: false }, { text: 'Ácido', icon: '🍋', correct: true }, { text: 'Salado', icon: '🧂', correct: false }] },
+      { question: 'Que comida es dulce?', options: [{ text: 'Papas fritas', icon: '🍟', correct: false }, { text: 'Un pastel', icon: '🎂', correct: true }, { text: 'Una ensalada', icon: '🥗', correct: false }] },
+      { question: 'Que es salado?', options: [{ text: 'Un helado', icon: '🍦', correct: false }, { text: 'Una manzana', icon: '🍎', correct: false }, { text: 'Las papas fritas', icon: '🍟', correct: true }] },
+      { question: 'Que sabor tiene el chocolate?', options: [{ text: 'Salado', icon: '🧂', correct: false }, { text: 'Dulce', icon: '🍫', correct: true }, { text: 'Ácido', icon: '🍋', correct: false }] },
+      { question: 'Que fruta es muy dulce?', options: [{ text: 'El limón', icon: '🍋', correct: false }, { text: 'La sandía', icon: '🍉', correct: true }, { text: 'El ajo', icon: '🧄', correct: false }] },
+      { question: 'Que sabor tiene la sal?', options: [{ text: 'Dulce', icon: '🍬', correct: false }, { text: 'Salado', icon: '🧂', correct: true }, { text: 'Ácido', icon: '🍋', correct: false }] },
+      { question: 'Que bebida es dulce?', options: [{ text: 'El jugo de naranja', icon: '🧃', correct: true }, { text: 'El agua con sal', icon: '💧', correct: false }, { text: 'El vinagre', icon: '🫗', correct: false }] },
+      { question: 'Que helado es dulce y frío?', options: [{ text: 'De chocolate', icon: '🍦', correct: true }, { text: 'De sal', icon: '🧂', correct: false }, { text: 'De limón amargo', icon: '🍋', correct: false }] },
+      { question: 'Que sabor tiene el azúcar?', options: [{ text: 'Amargo', icon: '😖', correct: false }, { text: 'Dulce', icon: '🍬', correct: true }, { text: 'Salado', icon: '🧂', correct: false }] },
+      { question: 'Que comida es ácida?', options: [{ text: 'La naranja', icon: '🍊', correct: true }, { text: 'El pan', icon: '🍞', correct: false }, { text: 'El arroz', icon: '🍚', correct: false }] },
+      { question: 'Que postre es muy dulce?', options: [{ text: 'La ensalada', icon: '🥗', correct: false }, { text: 'La dona', icon: '🍩', correct: true }, { text: 'El brócoli', icon: '🥦', correct: false }] },
+      { question: 'Que ponemos a las palomitas para que sean saladas?', options: [{ text: 'Azúcar', icon: '🍬', correct: false }, { text: 'Sal', icon: '🧂', correct: true }, { text: 'Limón', icon: '🍋', correct: false }] },
+      { question: 'Que fruta es ácida y amarilla?', options: [{ text: 'La fresa', icon: '🍓', correct: false }, { text: 'El plátano', icon: '🍌', correct: false }, { text: 'El limón', icon: '🍋', correct: true }] },
+      { question: 'Que sabor tiene la miel?', options: [{ text: 'Dulce', icon: '🍯', correct: true }, { text: 'Amargo', icon: '😖', correct: false }, { text: 'Salado', icon: '🧂', correct: false }] },
+      { question: 'Que comida de cumpleaños es dulce?', options: [{ text: 'El pastel', icon: '🎂', correct: true }, { text: 'Las papas', icon: '🥔', correct: false }, { text: 'La sopa', icon: '🍲', correct: false }] },
+      { question: 'Que dulce se come en Halloween?', options: [{ text: 'Ensalada', icon: '🥗', correct: false }, { text: 'Caramelos', icon: '🍭', correct: true }, { text: 'Sopa', icon: '🍲', correct: false }] },
+      { question: 'Que sabor tiene el café sin azúcar?', options: [{ text: 'Dulce', icon: '🍬', correct: false }, { text: 'Amargo', icon: '☕', correct: true }, { text: 'Salado', icon: '🧂', correct: false }] },
+      { question: 'Que fruta roja es dulce?', options: [{ text: 'La fresa', icon: '🍓', correct: true }, { text: 'El limón', icon: '🍋', correct: false }, { text: 'La cebolla', icon: '🧅', correct: false }] },
     ]
   },
   {
@@ -224,49 +144,29 @@ export const senses = [
     color: '#8b5cf6',
     gradient: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
     bgColor: '#ede9fe',
-    description: 'Con la piel y las manos podemos sentir si algo es suave, duro, frio o caliente.',
-    funFact: 'La piel es el organo mas grande de tu cuerpo!',
+    description: 'Con la piel y las manos podemos sentir si algo es suave, duro, frío o caliente.',
+    funFact: 'La piel es el órgano más grande de tu cuerpo!',
     questions: [
-      {
-        question: 'Que usamos para tocar?',
-        options: [
-          { text: 'Los ojos', icon: '👀', correct: false },
-          { text: 'Las manos y la piel', icon: '🖐️', correct: true },
-          { text: 'La boca', icon: '👄', correct: false },
-        ]
-      },
-      {
-        question: 'Que es suave?',
-        options: [
-          { text: 'Una piedra', icon: '🪨', correct: false },
-          { text: 'Un gatito', icon: '🐱', correct: true },
-          { text: 'Un ladrillo', icon: '🧱', correct: false },
-        ]
-      },
-      {
-        question: 'Que es frio?',
-        options: [
-          { text: 'El sol', icon: '☀️', correct: false },
-          { text: 'Un helado', icon: '🍦', correct: true },
-          { text: 'Una sopa caliente', icon: '🍲', correct: false },
-        ]
-      },
-      {
-        question: 'Que es duro?',
-        options: [
-          { text: 'Una almohada', icon: '🛏️', correct: false },
-          { text: 'Una nube', icon: '☁️', correct: false },
-          { text: 'Una roca', icon: '🪨', correct: true },
-        ]
-      },
-      {
-        question: 'Que es caliente?',
-        options: [
-          { text: 'La nieve', icon: '❄️', correct: false },
-          { text: 'El fuego', icon: '🔥', correct: true },
-          { text: 'Un jugo frio', icon: '🧃', correct: false },
-        ]
-      },
+      { question: 'Que usamos para tocar?', options: [{ text: 'Los ojos', icon: '👀', correct: false }, { text: 'Las manos y la piel', icon: '🖐️', correct: true }, { text: 'La boca', icon: '👄', correct: false }] },
+      { question: 'Que es suave?', options: [{ text: 'Una piedra', icon: '🪨', correct: false }, { text: 'Un gatito', icon: '🐱', correct: true }, { text: 'Un ladrillo', icon: '🧱', correct: false }] },
+      { question: 'Que es frío?', options: [{ text: 'El sol', icon: '☀️', correct: false }, { text: 'Un helado', icon: '🍦', correct: true }, { text: 'Una sopa caliente', icon: '🍲', correct: false }] },
+      { question: 'Que es duro?', options: [{ text: 'Una almohada', icon: '🛏️', correct: false }, { text: 'Una nube', icon: '☁️', correct: false }, { text: 'Una roca', icon: '🪨', correct: true }] },
+      { question: 'Que es caliente?', options: [{ text: 'La nieve', icon: '❄️', correct: false }, { text: 'El fuego', icon: '🔥', correct: true }, { text: 'Un jugo frío', icon: '🧃', correct: false }] },
+      { question: 'Que es suave como una nube?', options: [{ text: 'El algodón', icon: '☁️', correct: true }, { text: 'Una piedra', icon: '🪨', correct: false }, { text: 'El vidrio', icon: '🪟', correct: false }] },
+      { question: 'Que se siente mojado?', options: [{ text: 'El agua', icon: '💧', correct: true }, { text: 'La arena seca', icon: '🏖️', correct: false }, { text: 'El papel', icon: '📄', correct: false }] },
+      { question: 'Que es muy frío?', options: [{ text: 'La nieve', icon: '❄️', correct: true }, { text: 'El café', icon: '☕', correct: false }, { text: 'La sopa', icon: '🍲', correct: false }] },
+      { question: 'Que se siente rasposo?', options: [{ text: 'La seda', icon: '🧣', correct: false }, { text: 'El papel lija', icon: '📃', correct: true }, { text: 'La crema', icon: '🧴', correct: false }] },
+      { question: 'Que se siente pegajoso?', options: [{ text: 'La miel', icon: '🍯', correct: true }, { text: 'El hielo', icon: '🧊', correct: false }, { text: 'El vidrio', icon: '🪟', correct: false }] },
+      { question: 'Que se siente suave en la cama?', options: [{ text: 'La cobija', icon: '🛏️', correct: true }, { text: 'El piso', icon: '🏠', correct: false }, { text: 'La pared', icon: '🧱', correct: false }] },
+      { question: 'Que se siente cuando pisas la arena?', options: [{ text: 'Frío y duro', icon: '🧊', correct: false }, { text: 'Caliente y suave', icon: '🏖️', correct: true }, { text: 'Mojado', icon: '💧', correct: false }] },
+      { question: 'Que es liso y resbaloso?', options: [{ text: 'El jabón mojado', icon: '🧼', correct: true }, { text: 'La toalla', icon: '🧻', correct: false }, { text: 'La alfombra', icon: '🟫', correct: false }] },
+      { question: 'Que nos da cosquillas?', options: [{ text: 'Una pluma suave', icon: '🪶', correct: true }, { text: 'Una roca', icon: '🪨', correct: false }, { text: 'Un ladrillo', icon: '🧱', correct: false }] },
+      { question: 'Que se siente cuando abrazas a tu mama?', options: [{ text: 'Frío', icon: '❄️', correct: false }, { text: 'Calentito y suave', icon: '🤗', correct: true }, { text: 'Duro', icon: '🪨', correct: false }] },
+      { question: 'Que se siente al tocar un peluche?', options: [{ text: 'Duro', icon: '🪨', correct: false }, { text: 'Suave y esponjoso', icon: '🧸', correct: true }, { text: 'Mojado', icon: '💧', correct: false }] },
+      { question: 'Que pasa si tocas hielo mucho tiempo?', options: [{ text: 'Se siente caliente', icon: '🔥', correct: false }, { text: 'Las manos se enfrían', icon: '🥶', correct: true }, { text: 'Nada', icon: '😐', correct: false }] },
+      { question: 'Que es blando y se puede apretar?', options: [{ text: 'Una pelota de esponja', icon: '🟡', correct: true }, { text: 'Una mesa', icon: '🪑', correct: false }, { text: 'Un vaso de vidrio', icon: '🥛', correct: false }] },
+      { question: 'Que se siente al caminar descalzo en el pasto?', options: [{ text: 'Suave y fresco', icon: '🌱', correct: true }, { text: 'Caliente y duro', icon: '🔥', correct: false }, { text: 'Pegajoso', icon: '🍯', correct: false }] },
+      { question: 'Que se siente al meter las manos en plastilina?', options: [{ text: 'Duro como piedra', icon: '🪨', correct: false }, { text: 'Blando y moldeable', icon: '🎨', correct: true }, { text: 'Frío como hielo', icon: '🧊', correct: false }] },
     ]
   }
 ]
