@@ -1,0 +1,17 @@
+{
+  "name": "Mis 5 Sentidos",
+  "short_name": "5 Sentidos",
+  "description": "Aprende los 5 sentidos de forma divertida",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#667eea",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
