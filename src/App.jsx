@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import SenseGame from './pages/SenseGame'
 import FinalQuiz from './pages/FinalQuiz'
 import LearnMode from './pages/LearnMode'
+import Challenge from './pages/Challenge'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/sentido/:senseId" element={<SenseGame />} />
           <Route path="/prueba-final" element={<FinalQuiz />} />
           <Route path="/aprender" element={<LearnMode />} />
+          <Route path="/desafio" element={<Challenge />} />
         </Routes>
       </div>
     </PlayerProvider>

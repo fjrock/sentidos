@@ -32,6 +32,12 @@ function Home() {
     navigate('/prueba-final')
   }
 
+  const handleChallenge = () => {
+    stopSpeaking()
+    playClick()
+    navigate('/desafio')
+  }
+
   const handleLearn = () => {
     stopSpeaking()
     playClick()
@@ -87,8 +93,22 @@ function Home() {
         <button
           className="sense-card bounce-in"
           style={{
-            background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+            background: 'linear-gradient(135deg, #e11d48, #be123c)',
             animationDelay: '0.6s',
+          }}
+          onClick={handleChallenge}
+        >
+          <div className="sense-card-icon">🧠</div>
+          <div className="sense-card-name">Desafío</div>
+          <div className="sense-card-organ">Sin pistas! Tu memoria</div>
+          <div className="sense-card-arrow">▶</div>
+        </button>
+
+        <button
+          className="sense-card bounce-in"
+          style={{
+            background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+            animationDelay: '0.7s',
           }}
           onClick={handleFinalQuiz}
         >
