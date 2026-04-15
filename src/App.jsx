@@ -4,6 +4,7 @@ import './App.css'
 import Welcome from './pages/Welcome'
 import Home from './pages/Home'
 import SenseGame from './pages/SenseGame'
+import FinalQuiz from './pages/FinalQuiz'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Welcome />} />
           <Route path="/inicio" element={<Home />} />
           <Route path="/sentido/:senseId" element={<SenseGame />} />
+          <Route path="/prueba-final" element={<FinalQuiz />} />
         </Routes>
       </div>
     </PlayerProvider>

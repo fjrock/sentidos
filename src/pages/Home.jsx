@@ -15,7 +15,7 @@ function Home() {
       return
     }
     const timer = setTimeout(() => {
-      speak(`Hola ${playerName}! Elige un sentido para aprender y jugar. Los sentidos son: La Visión, La Audición, El Olfato, El Gusto y El Tacto.`)
+      speak(`Hola ${playerName}! Elige un sentido para aprender y jugar. Los sentidos son: La Visión, La Audición, El Olfato, El Gusto y El Tacto. También puedes hacer la Prueba Final!`)
     }, 600)
     return () => { clearTimeout(timer); stopSpeaking() }
   }, [])
@@ -24,6 +24,12 @@ function Home() {
     stopSpeaking()
     playClick()
     navigate(`/sentido/${senseId}`)
+  }
+
+  const handleFinalQuiz = () => {
+    stopSpeaking()
+    playClick()
+    navigate('/prueba-final')
   }
 
   return (
@@ -57,6 +63,20 @@ function Home() {
             <div className="sense-card-arrow">▶</div>
           </button>
         ))}
+
+        <button
+          className="sense-card bounce-in final-quiz-card"
+          style={{
+            background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+            animationDelay: '0.5s',
+          }}
+          onClick={handleFinalQuiz}
+        >
+          <div className="sense-card-icon">🏆</div>
+          <div className="sense-card-name">Prueba Final</div>
+          <div className="sense-card-organ">Los 5 Sentidos</div>
+          <div className="sense-card-arrow">▶</div>
+        </button>
       </div>
 
       <footer className="home-footer">
