@@ -32,6 +32,12 @@ function Home() {
     navigate('/prueba-final')
   }
 
+  const handleLearn = () => {
+    stopSpeaking()
+    playClick()
+    navigate('/aprender')
+  }
+
   return (
     <div className="home">
       <div className="home-clouds">
@@ -47,13 +53,27 @@ function Home() {
       </header>
 
       <div className="senses-grid">
+        <button
+          className="sense-card bounce-in"
+          style={{
+            background: 'linear-gradient(135deg, #06b6d4, #0891b2)',
+            animationDelay: '0s',
+          }}
+          onClick={handleLearn}
+        >
+          <div className="sense-card-icon">🧠</div>
+          <div className="sense-card-name">Aprende</div>
+          <div className="sense-card-organ">Paso a paso con rimas</div>
+          <div className="sense-card-arrow">▶</div>
+        </button>
+
         {senses.map((sense, index) => (
           <button
             key={sense.id}
             className="sense-card bounce-in"
             style={{
               background: sense.gradient,
-              animationDelay: `${index * 0.1}s`,
+              animationDelay: `${(index + 1) * 0.1}s`,
             }}
             onClick={() => handleSenseClick(sense.id)}
           >
@@ -65,10 +85,10 @@ function Home() {
         ))}
 
         <button
-          className="sense-card bounce-in final-quiz-card"
+          className="sense-card bounce-in"
           style={{
             background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-            animationDelay: '0.5s',
+            animationDelay: '0.6s',
           }}
           onClick={handleFinalQuiz}
         >
